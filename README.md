@@ -10,7 +10,7 @@ Om Bidikar
 
 This project is a custom implementation of a Linux command-line shell written in C.
 
-It supports execution of both internal and external commands, along with advanced features such as piping, job control, and signal handling, closely mimicking the behavior of a Unix shell.
+It mimics core functionalities of a Unix shell by accepting user commands, parsing them, and executing them using system calls. The shell supports both internal and external commands along with advanced features like piping and job control.
 
 ---
 
@@ -22,7 +22,7 @@ It supports execution of both internal and external commands, along with advance
 * Support for piping (`|`)
 * Job control (`jobs`, `fg`, `bg`)
 * Signal handling (`Ctrl+C`, `Ctrl+Z`)
-* Customizable shell prompt
+* Customizable shell prompt (`PS1`)
 
 ---
 
@@ -41,6 +41,10 @@ Header Files:
 Command List:
 
 * external_commands.txt
+
+Screenshots:
+
+* screenshots/
 
 Build:
 
@@ -70,7 +74,7 @@ make
 
 ## 🧪 Example Commands
 
-Basic Commands:
+### Basic Commands
 
 ```bash
 ls
@@ -78,28 +82,46 @@ pwd
 date
 ```
 
-Built-in Commands:
+### Built-in Commands
 
 ```bash
 cd ..
+pwd
 echo hello
 exit
 ```
 
-Pipes:
+### Pipes
 
 ```bash
 ls | grep .c
 ```
 
-Job Control:
+### Job Control
 
 ```bash
-sleep 10 &
+sleep 20
+# Press Ctrl+Z
 jobs
 fg
 bg
 ```
+
+---
+
+## 📸 Output Screenshots
+
+### Basic Commands
+
+![Basic Commands](screenshots/basic.png)
+
+### Pipes
+
+![Pipes](screenshots/pipes.png)
+
+### Job Control
+
+![Jobs](screenshots/jobs.png)
 
 ---
 
@@ -118,7 +140,7 @@ bg
 
 * Limited support for complex command chaining
 * Basic parsing logic
-* No support for advanced shell features like scripting
+* No advanced scripting support
 
 ---
 
@@ -126,10 +148,10 @@ bg
 
 The shell continuously reads user input, parses it into commands and arguments, and determines whether it is an internal or external command.
 
-For external commands, a child process is created using `fork()`, and execution is handled using `execvp()`.
+For external commands, a child process is created using `fork()` and executed using `execvp()`.
 For piped commands, multiple processes are created and connected using pipes.
 
-Signal handling allows process control such as stopping (`Ctrl+Z`) and interrupting (`Ctrl+C`) processes.
+Signal handling enables control of running processes using `Ctrl+C` and `Ctrl+Z`, and supports job management using `fg` and `bg`.
 
 ---
 
