@@ -113,7 +113,7 @@ bg
 
 ### Basic Commands
 
-![Basic Commands](screenshots/basic.png)
+![Basic Commands](screenshots/basic_commands.png)
 
 ### Pipes
 
@@ -121,7 +121,7 @@ bg
 
 ### Job Control
 
-![Jobs](screenshots/jobs.png)
+![Jobs](screenshots/job_control.png)
 
 ---
 
